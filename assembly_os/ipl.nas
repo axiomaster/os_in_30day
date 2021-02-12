@@ -77,9 +77,7 @@ next:
 	mov si, msg
 	call putloop
 
-;当需要显示的信息都显示完毕，那么进入死循环
-fin:
-	hlt
+	mov [0x0ff0], ch
 	jmp fin
 
 putloop:
@@ -88,11 +86,16 @@ putloop:
 	mov al, [si]
 	add si, 1
 	cmp al, 0
-	je fin
+	je over
 	mov ah, 0x0e
 	mov bx, 10
 	int 0x10
 	jmp putloop
+over:
+	ret
+
+fin:
+	jmp 0xc400
 
 msg:
 	;设定需要显示的字符
