@@ -18,7 +18,6 @@ kernel:entry.o main.o screen.o
 entry.o:entry.S
 	gcc -nostdinc $(CFLAGS) -c -o $@ $<
 main.o:main.c
-	@#对应《30天》中的bootpack.c
 	gcc -nostdinc $(CFLAGS) -Os -c -o $@ $<
 screen.o:screen.c
 	gcc -nostdinc $(CFLAGS) -c -o $@ $<

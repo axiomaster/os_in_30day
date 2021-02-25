@@ -12,8 +12,13 @@
  *
  * ==================================================
  */
-#include<header.h>
-int vmain(void){
-	while(1);
+#include <header.h>
+int vmain(void)
+{
+	color_screen(15);
+	for (;;)
+	{
+		io_hlt();
+	}
 	return 0;
 }
