@@ -91,7 +91,7 @@ seta20.2:
   # Switches processor into 32-bit mode.
   ljmp    $PROT_MODE_CSEG, $protcseg
   msg:
-  .asciz "\r\n\n\rmy kernel is runing jos"
+  .asciz "\r\n\n\rkernel is runing"
   
  try:
   .asciz "\r\n\n\rtry it again"
