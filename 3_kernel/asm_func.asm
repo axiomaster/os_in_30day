@@ -1,12 +1,19 @@
 extern	cstart
 
-[section .text]		; オブジェクトファイルではこれを書いてからプログラムを書く
+[section .text]
 
-global io_hlt			; このプログラムに含まれる関数名
 global _start
+global io_hlt, write_mem8
+
+_start:
+	call cstart
 
 io_hlt:	; void io_hlt(void);
 	HLT
 	RET
-_start:
-	call cstart
+	
+write_mem8:
+	mov ecx, [esp+4]
+	mov al, [esp+8]
+	mov [ecx], al
+	ret

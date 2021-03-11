@@ -7,7 +7,7 @@ kernel:
 	nasm -f elf asm_func.asm -o asm_func.o
 	gcc -c kernel.c -o kernel.o
 	ld -s -Ttext 0x30400 asm_func.o kernel.o -o kernel
-img:boot loader kernel
+img:boot kernel
 	dd if=boot.bin of=a.img count=1 bs=512
 	dd if=/dev/zero of=a.img bs=512 seek=1 skip=1 count=2879
 copy:img
@@ -21,4 +21,4 @@ run:copy
 	#qemu-system-i386 -drive file=a.img,if=floppy
 	bochs
 clean:
-	rm boot.bin loader.bin kernel.bin a.img *.o kernel
+	rm boot.bin kernel.bin a.img *.o kernel
